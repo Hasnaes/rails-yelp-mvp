@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6">
+    <div class="card">
+      <div class="card-header">
+      <h2><%= @restaurant.name %></h2>
+      </div>
+    </div>
+      <p style="background-color: #F1F0E8"><strong>📍 Address :</strong></p>
+      <p><%= @restaurant.address %></p>
+      <p style="background-color: #F1F0E8"><strong>📞 Phone number :</strong></p>
+      <p><%= @restaurant.phone_number %></p>
+      <p style="background-color: #F1F0E8"><strong>🍟 Category :</strong></p>
+      <p><%= @restaurant.category %></p>
+
+      <p style="background-color: #EEE0C9"><strong>Reviews ⬇️</strong></p>
+      <ul class="list-group">
+        <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item"><%= review.content %></li>
+          <li class="list-group-item"><%= '⭐' * review.rating  %></li>
+        <% end %>
+      </ul>
+      <p><%= link_to "Add review", new_restaurant_review_path(@restaurant), class:"btn btn-primary mt-3" %>
+      <br>
+
+      <%= link_to restaurants_path(@restaurants) do %>
+        <i class="fa-solid fa-left-long"></i>
+      <% end %>
+    </div>
+  </div>
+</div>
